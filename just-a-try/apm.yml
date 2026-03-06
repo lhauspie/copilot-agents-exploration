@@ -1,0 +1,10 @@
+name: just-a-try
+version: 1.0.0
+description: APM project for just-a-try
+author: Logan HAUSPIE
+dependencies:
+  apm:
+  - lhauspie/copilot-agents-exploration
+  mcp: []
+scripts:
+  tic-tac-toe: "copilot --log-level all --log-dir copilot-logs --allow-all-tools -p tic-tac-toe-apm.prompt.md"

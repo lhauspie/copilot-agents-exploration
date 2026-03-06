@@ -74,39 +74,11 @@ Exemples de duels utiles :
 - `Groot` vs `Tic Tac Toe Expert`
 - `Superman` vs `Tic Tac Toe Expert`
 
-## 📦 Distribution avec APM
-
-APM : https://github.com/microsoft/apm
-
-### Prérequis
-
-Installer Copilot CLI :
-```bash
-brew install copilot-cli
-```
-Si vous n'êtes pas sur MacOS ==> https://github.com/github/copilot-cli
-
-Authentifier Copilot CLI :
-
-- Soit en lançant `copilot` puis la commande `/login`
-- Soit via un PAT GitHub avec la permission `Copilot Requests`
-- Si vous utilisez `COPILOT_GITHUB_TOKEN`, `GH_TOKEN` ou `GITHUB_TOKEN`, vérifiez qu'il est valide, non expiré, et qu'il porte cette permission
-
-Installer APM :
-```bash
-curl -sSL https://raw.githubusercontent.com/microsoft/apm/main/install.sh | sh
-```
-
-Installer le runtime copilot dans APM :
-```bash
-apm runtime setup copilot
-```
-
-### Executer avant de packager
+## Execution local
 
 Le dépôt inclut maintenant un manifeste `apm.yml` pour l'exécution outer loop, conformément à l'article.
 
-Scripts fournis :
+Scripts fournis par l'agent lui-même avant tout packaging APM :
 
 - `copilot-tic-tac-toe`
 - `copilot-tic-tac-toe-debug`
@@ -122,7 +94,76 @@ Si l'exécution affiche `Authentication failed` ou un log du type `401 unauthori
 
 Les logs du runtime Copilot sont écrits dans `copilot-logs/`.
 
+## 📦 Distribution avec APM
 
+APM : https://github.com/microsoft/apm
+
+Il suffit d'un commit push sur le repo de l'agent.
+
+## Utilisation dans un projet consommateur
+
+APM : https://github.com/microsoft/apm
+
+### Prérequis
+
+***Installer Copilot CLI*** :
+```bash
+brew install copilot-cli
+```
+
+Si vous n'êtes pas sur MacOS ==> https://github.com/github/copilot-cli
+
+***Authentifier Copilot CLI*** :
+
+- Soit en lançant `copilot` puis la commande `/login`
+- Soit via un PAT GitHub avec la permission `Copilot Requests`
+- Si vous utilisez `COPILOT_GITHUB_TOKEN`, `GH_TOKEN` ou `GITHUB_TOKEN`, vérifiez qu'il est valide, non expiré, et qu'il porte cette permission
+
+***Installer APM*** :
+```bash
+curl -sSL https://raw.githubusercontent.com/microsoft/apm/main/install.sh | sh
+```
+
+***Installer le runtime copilot dans APM*** :
+```bash
+apm runtime setup copilot
+```
+
+### Installation du package
+
+***Un peu comme NPM en fait*** :
+
+```bash
+apm install lhauspie/copilot-agents-explorations
+```
+
+Ici le nom du repo est directement utilisé pour tirer les fichiers nécessaires.
+
+***Ensuite on install les apm_modules*** :
+```bash
+apm install
+```
+
+***On ajoute les scripts nous permettant d'executer le nouvel Agent*** :
+```yaml
+#./apm.yml
+...
+scripts:
+    tic-tac-toe: "copilot -p tic-tac-toe-apm.prompt.md"
+```
+Important : On voit bien **-apm** dans le nom du fichier du prompt, ce qui permet de ne pas le commit. Mais attention, il faut bien penser à le mettre.
+
+***Au passage, on voit qu'un fichier `.gitignore` est apparu*** :
+```
+# APM dependencies
+apm_modules/
+
+# APM integrated prompts
+.github/prompts/*-apm.prompt.md
+
+# APM integrated agents
+.github/agents/*-apm.agent.md
+```
 
 ## 🎯 Ce que le package garantit
 
@@ -137,3 +178,4 @@ Les logs du runtime Copilot sont écrits dans `copilot-logs/`.
 - [GitHub Blog - How to build reliable AI workflows with agentic primitives and context engineering](https://github.blog/ai-and-ml/github-copilot/how-to-build-reliable-ai-workflows-with-agentic-primitives-and-context-engineering/)
 - [VS Code - Customize AI in Visual Studio Code](https://code.visualstudio.com/docs/copilot/copilot-customization)
 - [PROSE - Tooling: Scaling Agent Primitives](https://danielmeppiel.github.io/awesome-ai-native/docs/tooling/)
+- [Example Repository from the autor of GitHub Blog](https://github.com/danielmeppiel/corporate-website)

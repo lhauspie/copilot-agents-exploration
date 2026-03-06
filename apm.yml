@@ -3,5 +3,5 @@ version: 1.0.0
 description: Distributable Tic-Tac-Toe agent package built with GitHub Copilot agentic primitives and context engineering.
 
 scripts:
-  copilot-tic-tac-toe: "copilot --log-level all --log-dir copilot-logs --allow-all-tools -p .github/prompts/tic-tac-toe.prompt.md"
-  copilot-tic-tac-toe-debug: "copilot --experimental --log-level all --log-dir copilot-logs --allow-all-tools -p .github/prompts/tic-tac-toe.prompt.md"
+  copilot-tic-tac-toe: "copilot --log-level all --log-dir copilot-logs --allow-all-tools -p .apm/prompts/tic-tac-toe.prompt.md"
+  copilot-tic-tac-toe-debug: "copilot --experimental --log-level all --log-dir copilot-logs --allow-all-tools -p .apm/prompts/tic-tac-toe.prompt.md"

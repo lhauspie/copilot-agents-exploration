@@ -1,0 +1,7 @@
+lockfile_version: '1'
+generated_at: '2026-03-06T17:40:35.823451+00:00'
+apm_version: 0.7.4
+dependencies:
+- repo_url: lhauspie/copilot-agents-exploration
+  host: github.com
+  resolved_commit: 315242fc450f3835610a5a4aff9509651489ab82
