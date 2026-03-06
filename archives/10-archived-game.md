@@ -19,6 +19,8 @@ Initial board:
 7 | 8 | 9
 ```
 
+## Game Transcript
+
 === TURN 1 - X (Superman) ===
 
 Current board:

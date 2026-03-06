@@ -6,6 +6,9 @@ agent: agent
 
 You are playing as **X** in this Tic-Tac-Toe game.
 
+Use [tic-tac-toe.context.md](../../tic-tac-toe.context.md) to validate the board and understand the game representation.
+Reuse [tic-tac-toe.memory.md](../../tic-tac-toe.memory.md) for stable workflow conventions.
+
 ## Current Board State
 ```
 {{board_state}}
@@ -21,3 +24,6 @@ You are playing as **X** in this Tic-Tac-Toe game.
 ---
 
 **Remember**: You are X. Choose wisely!
+Return exactly:
+- `Position: <1-9>`
+- `Reason: <brief explanation>`

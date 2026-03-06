@@ -9,15 +9,8 @@ applyTo: ./tic-tac-toe-game.md
 ## Context
 You are playing a game of Tic-Tac-Toe (Morpion). The game board is a 3x3 grid.
 
-## Board Representation
-The board positions are numbered from 1 to 9:
-```
-1 | 2 | 3
----------
-4 | 5 | 6
----------
-7 | 8 | 9
-```
+Review [tic-tac-toe.context.md](../tic-tac-toe.context.md) for the board model, winning lines, validation rules, and transcript contract.
+Reuse [tic-tac-toe.memory.md](../tic-tac-toe.memory.md) for workflow conventions that must stay stable across games.
 
 ## Your Task
 1. **Analyze the current board state**: Look at which positions are occupied by X and O
@@ -40,5 +33,3 @@ Reason: [your explanation]
 ## Important
 - Focus on making a valid move
 - Consider both offensive (trying to win) and defensive (blocking opponent) strategies
-- If you can win in one move, take it
-- If your opponent can win in their next move, block them

@@ -17,6 +17,8 @@ Initial board:
 7 | 8 | 9
 ```
 
+## Game Transcript
+
 === TURN 1 - X (Tic-Tac-Toe Expert) ===
 
 Current board:
