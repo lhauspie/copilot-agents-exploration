@@ -33,7 +33,7 @@ Cet exemple montre comment une partie complète pourrait se dérouler entre X et
 **Réponse de {Nom de l'agent jouant X} :**
 ```
 Position: 5
-Reason: Le centre semble être un bon endroit pour commencer!
+Reason: {La raison invoquée par le joueur}
 ```
 
 **Plateau après coup :**
@@ -61,7 +61,7 @@ Reason: Le centre semble être un bon endroit pour commencer!
 **Réponse de {Nom de l'agent jouant X} :**
 ```
 Position: 1
-Reason: L'adversaire a pris le centre. Stratégie optimale : prendre un coin pour créer des opportunités de fourche. Position 1 (coin supérieur gauche) est un choix classique.
+Reason: {La raison invoquée par le joueur}
 ```
 
 **Plateau après coup :**
@@ -89,7 +89,7 @@ O | 2 | 3
 **Réponse de {Nom de l'agent jouant X} :**
 ```
 Position: 3
-Reason: Ce coin est libre, je le prends!
+Reason: {La raison invoquée par le joueur}
 ```
 
 **Plateau après coup :**
@@ -117,7 +117,7 @@ O | 2 | X
 **Réponse de {Nom de l'agent jouant O} :**
 ```
 Position: 7
-Reason: CRITIQUE! L'adversaire a X en 3 et X en 5. S'il joue en 7, il gagne avec la diagonale 3-5-7. Je dois bloquer cette menace immédiatement en prenant la position 7.
+Reason: {La raison invoquée par le joueur}
 ```
 
 **Plateau après coup :**
@@ -145,7 +145,7 @@ O | 8 | 9
 **Réponse de {Nom de l'agent jouant X} :**
 ```
 Position: 9
-Reason: Le coin en bas à droite est disponible, ça semble bien!
+Reason: {La raison invoquée par le joueur}
 ```
 
 **Plateau après coup :**
@@ -173,7 +173,7 @@ O | 8 | X
 **Réponse de {Nom de l'agent jouant O} :**
 ```
 Position: 4
-Reason: VICTOIRE! Je peux compléter la colonne de gauche : O en 1, O en 7, et maintenant O en 4. Cela me donne trois O alignés verticalement dans la colonne 1-4-7. VICTOIRE!
+Reason: {La raison invoquée par le joueur}
 ```
 
 **Plateau après coup :**

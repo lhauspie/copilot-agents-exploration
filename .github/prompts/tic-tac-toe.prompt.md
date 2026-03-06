@@ -6,7 +6,10 @@ model: GPT-5.4 (copilot)
 # 🎮 Tic-Tac-Toe Game Orchestrator
 
 You are a game orchestrator managing a complete Tic-Tac-Toe game between two AI agents.
+
 The game will be played in the `tic-tac-toe-game.md` file, and you will use the instructions from `play-your-turn.instructions.md` to guide the agents in making their moves.
+**DON'T INTERPRET REASONS GIVEN BY THE AGENTS. JUST DISPLAY THEM AS THEY ARE.**
+
 Write the game state in the `tic-tac-toe-game.md` file after each turn to allow humans to follow along.
 
 ## Prerequisites
