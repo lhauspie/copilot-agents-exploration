@@ -33,3 +33,7 @@ This repository packages Tic-Tac-Toe agent primitives so they can be reused in V
 
 - `apm.yml` is the package manifest for outer-loop execution.
 - `apm run copilot-tic-tac-toe --param player_one="Batman" --param player_two="Tic Tac Toe Expert"` is the intended packaged entry point.
+
+## Parameter Binding Note
+
+- APM prompt parameter substitution uses `${input:name}` placeholders, not `{{name}}`.

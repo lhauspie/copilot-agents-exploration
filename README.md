@@ -65,8 +65,8 @@ Pour lancer une partie depuis l'éditeur, invoquez le prompt d'orchestration et 
 
 Variables attendues par le workflow :
 
-- `{{player_one}}`
-- `{{player_two}}`
+- `${input:player_one}`
+- `${input:player_two}`
 
 Exemples de duels utiles :
 
@@ -78,15 +78,38 @@ Exemples de duels utiles :
 
 APM : https://github.com/microsoft/apm
 
-### Prérequis : Installer APM
+### Prérequis
 
+Installer Copilot CLI :
+```bash
+brew install copilot-cli
+```
+Si vous n'êtes pas sur MacOS ==> https://github.com/github/copilot-cli
+
+Authentifier Copilot CLI :
+
+- Soit en lançant `copilot` puis la commande `/login`
+- Soit via un PAT GitHub avec la permission `Copilot Requests`
+- Si vous utilisez `COPILOT_GITHUB_TOKEN`, `GH_TOKEN` ou `GITHUB_TOKEN`, vérifiez qu'il est valide, non expiré, et qu'il porte cette permission
+
+Installer APM :
 ```bash
 curl -sSL https://raw.githubusercontent.com/microsoft/apm/main/install.sh | sh
 ```
 
-### Distribute then Execute
+Installer le runtime copilot dans APM :
+```bash
+apm runtime setup copilot
+```
+
+### Executer avant de packager
 
 Le dépôt inclut maintenant un manifeste `apm.yml` pour l'exécution outer loop, conformément à l'article.
+
+Scripts fournis :
+
+- `copilot-tic-tac-toe`
+- `copilot-tic-tac-toe-debug`
 
 Exemple de cycle de distribution :
 ```bash
@@ -95,10 +118,11 @@ apm compile
 apm run copilot-tic-tac-toe --param player_one="Batman" --param player_two="Tic Tac Toe Expert"
 ```
 
-Scripts fournis :
+Si l'exécution affiche `Authentication failed` ou un log du type `401 unauthorized: Personal Access Token does not have "Copilot Requests" permission`, le problème ne vient pas du prompt Tic-Tac-Toe ni du manifeste APM. Il faut ré-authentifier `copilot` ou corriger les permissions du token utilisé par le CLI.
 
-- `copilot-tic-tac-toe`
-- `copilot-tic-tac-toe-debug`
+Les logs du runtime Copilot sont écrits dans `copilot-logs/`.
+
+
 
 ## 🎯 Ce que le package garantit
 

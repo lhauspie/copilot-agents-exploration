@@ -2,8 +2,8 @@
 agent: Tic Tac Toe Game Master
 model: GPT-5.4 (copilot)
 argument-hint: |
-  - `{{player_one}}`: Name or identifier of the first player agent
-  - `{{player_two}}`: Name or identifier of the second player agent
+   - `${input:player_one}`: Name or identifier of the first player agent
+   - `${input:player_two}`: Name or identifier of the second player agent
 ---
 
 # 🎮 Tic-Tac-Toe Game Orchestrator
@@ -25,8 +25,8 @@ Write the game state in the `tic-tac-toe-game.md` file after each turn to allow 
 ## Prerequisites
 
 Before starting the game, the user must provide values for both variables:
-- `{{player_one}}`
-- `{{player_two}}`
+- `${input:player_one}`
+- `${input:player_two}`
 
 These variables must contain the names or identifiers of the two agents that will play the game.
 
@@ -45,8 +45,8 @@ If one of these variables is missing, empty, or left as a placeholder, do not st
 
 2. **Random agent assignment**:
    - Generate a random number (0 or 1)
-   - If 0: X = {{player_one}}, O = {{player_two}}
-   - If 1: X = {{player_two}}, O = {{player_one}}
+   - If 0: X = ${input:player_one}, O = ${input:player_two}
+   - If 1: X = ${input:player_two}, O = ${input:player_one}
    
 3. **Announce the configuration**:
    - Display which combination was chosen
@@ -176,7 +176,7 @@ If an invalid move is detected:
 
 Start the game orchestration now!
 
-1. Verify that `{{player_one}}` and `{{player_two}}` were provided by the user
+1. Verify that `${input:player_one}` and `${input:player_two}` were provided by the user
 2. Initialize the game with random assignment
 3. Run all turns until conclusion
 4. Announce the winner
