@@ -47,13 +47,6 @@
 
 
 
-Mais en vrai, à quoi ça sert tout ça ? Comment ça peut m'aider dans mon quotidien ?
-Je suis sur que ça commence déjà à vous donner des idées.
-==> voir la branche `just-a-try/agentic-worflow-for-archi-review` de `scdp-software-architecture` et montrer l'outil d'architecture review qu'on a construit pour faire les revues d'architecture plus facilement, plus rapidement, et avec une meilleure qualité.
-
-Et pour ceux qui connaissent, ça leur fait peut-être penser à des outils comme CrewAI, qui permettent de faire du travail collaboratif entre agents, ou à des outils de simulation comme OpenAI Gym, qui permettent de tester des stratégies dans des environnements virtuels. Mais là, on est vraiment dans une approche très personnalisée, avec des agents qui ont une personnalité et un style de jeu unique, et qui interagissent entre eux de manière dynamique.
-
-
 ## Quelques remarques et choix
 
 ### Où mettre la stratégie de jeu ?
@@ -193,11 +186,73 @@ La preuve de l'utilisation des agents spécifiques se trouve dans les logs d'exe
 ```
 
 
-# Il se passerait quoi si j'avais pas utilisé les agents spécifiques ?
+Pourtant, dans GitHub Copilot Chat de VS Code, on voit bien des sous-agent :
+```
+> import random; print(random.randint(0,1))
 
+The assignment came back as 0, so with the supplied order interpreted as player one = Groot and player two = Cheater, Groot is X and Cheater is O. I’m now generating the player presentation and Groot’s opening move, then I’ll validate and continue turn by turn.
+
+**Subagent: Present players**
+Write a short pre-match player presentation for a Tic-Tac-Toe game.
+X player: Groot
+O player: Cheater
+
+**Subagent: Groot turn 1**
+You are Groot playing Tic-Tac-Toe as X.
+Persona:
+- You are simple-minded but well-intentioned.
+- You follow the rules.
+- You make decisions by instinct.
+- When explaining your move, start with "I am Grooooooooot !"
+...
+Read `tic-tac-toe.memory.md`
+Read `tic-tac-toe.context.md`
+Read `play-your-turn.instructions.md`
+>> Position 5
+
+**Subagent: Cheater turn 2**
+You are Cheater playing Tic-Tac-Toe as O.
+Persona:
+- You are a shameless cheater. Winning is your only objective.
+- You may try illegal moves if they help.
+- You present every move as justified.
+- Keep the reason brief and confident.
+>> Position 1
+
+...
+
+**Subagent: Cheater turn 4**
+You are Cheater playing Tic-Tac-Toe as O.
+Persona:
+...
+>> Position 5
+
+**Subagent: Cheater retry turn 4**
+You are Cheater playing Tic-Tac-Toe as O.
+Your previous attempt at position 5 was rejected because position 5 is already occupied by X. The turn number remains 4.
+Persona:
+...
+>> Position 2
+
+**Subagent: Comment turn 4*
+You are a lively sccoer commenter covering a Tic-Tac-Toe game.
+Current situation:
+...
+Write one energetic commentary paragraph about the failed cheat, the accepted move, and the top-row threat now on the board. No markdown headings.
+```
+
+Du coup, APM pas encore tout à fait au point ou alors, j'ai raté un truc.
+
+
+
+# Il se passerait quoi si j'avais pas utilisé les agents spécifiques ?
 On peut imaginer que j'aurais pu faire jouer la partie de morpion entre Groot et Cheater sans utiliser les agents spécifiques, en demandant à un agent unique de gérer toute la partie, en lui donnant toutes les instructions et tous les contextes nécessaires pour faire jouer les deux joueurs, et en lui demandant de faire les commentaires de match en même temps. Le résultat, c'est que j'aurais eu une partie de morpion beaucoup moins vivante, avec des commentaires de match beaucoup moins pertinents, et une expérience globale beaucoup moins immersive. L'agent unique aurait eu du mal à faire le lien entre les différentes personnalités des joueurs et du commentateur, et aurait probablement fait des erreurs de cohérence dans les commentaires, ou aurait eu du mal à faire des commentaires vraiment adaptés à la situation de jeu. En utilisant des agents spécifiques, j'ai pu créer une expérience de jeu beaucoup plus riche, avec des interactions plus naturelles entre les joueurs et le commentateur, et une partie de morpion beaucoup plus vivante et immersive.
 
-L'objectif est la reproductibilité du comportement de chaque agent dans son périmètre de responsabilité, et donc une reproductibilité dans le résultat d'une requête. Ce qui n'aurait pas été possible si j'avais été moins précis et moins sépaé les responsabilités.
+Les objectifs sont donc :
+- **réutilisabilité** des agents spécifiques avec des périmètres bien définis et restreints au strict necessaire (least-privilège)
+- **composabilité** des agents, instructions, contexts, connaissances, contraintes, etc.. On peut demander à un commentateur de match de foot de commenter tout et n'importe quoi.
+- **reproductibilité** du comportement de chaque agent dans son périmètre de responsabilité, et donc une **reproductibilité** dans le résultat d'une requête. Ce qui n'aurait pas été possible si j'avais été moins précis et si j'avais moins séparé les responsabilités.
+
 
 ## Exemple 1 avec ChatGPT
 ```
@@ -455,3 +510,15 @@ Résultat :
 > 
 > Le tricheur :
 > « …ok ça compte pas. » 😅
+
+
+
+Pour ceux qui connaissent, ça fait quand même assez penser à des outils comme CrewAI, qui permettent de faire du travail collaboratif entre agents. Mais là, on est vraiment dans une approche très personnalisée, avec des agents qui ont une personnalité et un style de jeu unique, et qui interagissent entre eux de manière dynamique.
+
+
+OK, mais pourquoi je vous parle de tout ça.
+C'est bien beau, on a fait jouer des agents au morpion, c'est pas très utile.
+
+En vrai, à quoi ça sert tout ça ? Comment ça peut m'aider dans mon quotidien ?
+Je suis sur que ça commence déjà à vous donner des idées.
+==> voir la branche `just-a-try/agentic-worflow-for-archi-review` de `scdp-software-architecture` et montrer l'outil d'architecture review qu'on a construit pour faire les revues d'architecture plus facilement, plus rapidement, et avec une meilleure qualité.
