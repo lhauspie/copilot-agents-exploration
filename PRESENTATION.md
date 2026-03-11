@@ -42,12 +42,11 @@
     - un tricheur : `12-archived-game.md`
     - un commentateur footbalistique : `14-archived-game.md`
 
-
-
-
-
-
 ## Quelques remarques et choix
+
+### Où mettre la physique du jeu ?
+
+### Où mettre les régles du jeu ?
 
 ### Où mettre la stratégie de jeu ?
 Elle ne semble pas être purement contextuelle. Elle exprime une heuristique de jeu. Selon une séparation plus stricte, elle devrait plutôt vivre dans un des endroits suivants:
@@ -60,6 +59,11 @@ Contrainte imposé par l'orchestrateur :
 - Grille valide
 - Fin de partie
 - Contrat de la retranscription
+
+
+## Exemple de puissance 4 sans contexte
+
+https://chatgpt.com/s/t_69b16ec6ff748191a8b5638daf06db22
 
 
 
@@ -75,9 +79,14 @@ Le context :
     - conventions de représentation
 
 
-La mémoire : Les choses qu'on a appris en itérant sur le workflow
+La mémoire : Les choses qu'on a appris en itérant sur le workflow.
 
 La partie distribuable implique de séparer ce qui est vrai tout le temps et le context local aux équipes qui vont utiliser ces agents distribuable.
+
+
+
+
+
 
 
 
@@ -394,7 +403,7 @@ Résultat :
 > . | . | .
 > ```
 > 
-> ### Tour 1
+> **Tour 1**
 > 
 > Groot :
 > « Je s’appelle Groot. » 🌿
@@ -420,7 +429,7 @@ Résultat :
 > . | . | .
 > ```
 > 
-> ### Tour 2
+> **Tour 2**
 > 
 > Groot :
 > « Je s’appelle Groot. » 🌳
@@ -446,7 +455,7 @@ Résultat :
 > . | . | G
 > ```
 > 
-> ### Tour 3
+> **Tour 3**
 > 
 > Groot :
 > « Je s’appelle Groot ! » 🌱
@@ -513,7 +522,8 @@ Résultat :
 
 
 
-Pour ceux qui connaissent, ça fait quand même assez penser à des outils comme CrewAI, qui permettent de faire du travail collaboratif entre agents. Mais là, on est vraiment dans une approche très personnalisée, avec des agents qui ont une personnalité et un style de jeu unique, et qui interagissent entre eux de manière dynamique.
+Pour ceux qui connaissent, ça fait quand même assez penser à des outils comme CrewAI, qui permettent de faire du travail collaboratif entre agents. Donc là on commence à se rapprocher de cette approche de crew.
+
 
 
 OK, mais pourquoi je vous parle de tout ça.
@@ -522,3 +532,17 @@ C'est bien beau, on a fait jouer des agents au morpion, c'est pas très utile.
 En vrai, à quoi ça sert tout ça ? Comment ça peut m'aider dans mon quotidien ?
 Je suis sur que ça commence déjà à vous donner des idées.
 ==> voir la branche `just-a-try/agentic-worflow-for-archi-review` de `scdp-software-architecture` et montrer l'outil d'architecture review qu'on a construit pour faire les revues d'architecture plus facilement, plus rapidement, et avec une meilleure qualité.
+
+
+# Bibliographie
+- https://github.blog/ai-and-ml/github-copilot/how-to-build-reliable-ai-workflows-with-agentic-primitives-and-context-engineering
+- https://danielmeppiel.github.io/awesome-ai-native/docs/getting-started
+- https://danielmeppiel.github.io/awesome-ai-native/docs/tooling
+- https://docs.github.com/en/copilot/how-tos/copilot-cli/set-up-copilot-cli/install-copilot-cli
+- https://github.com/github/copilot-cli
+- https://github.com/microsoft/apm
+- https://github.com/microsoft/apm-sample-package
+- https://github.com/microsoft/apm/blob/main/docs/getting-started.md
+- https://github.com/danielmeppiel/action-apm-cli
+- https://github.com/danielmeppiel/corporate-website
+- https://docs.github.com/en/copilot/concepts/agents/copilot-cli/fleet
