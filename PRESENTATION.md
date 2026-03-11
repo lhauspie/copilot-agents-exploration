@@ -42,51 +42,6 @@
     - un tricheur : `12-archived-game.md`
     - un commentateur footbalistique : `14-archived-game.md`
 
-Mais j'ai quand même un doute sur le fait que les agents soient bien utilisés pour executer les actions. ==> `15-archived-game.md`
-
-Par exemple, le tricheur ne tente pas la triche : 
-> Move played: Position 1
-> Reason: Corner control sets up multiple winning lines.
-> 
-> Board:
-> ```
-> ⬜ | ⬜ | ⬜        ⭕ | ⬜ | ⬜
-> -----------  >>>  -----------
-> ⬜ | ❌ | ⬜        ⬜ | ❌ | ⬜
-> -----------        -----------
-> ⬜ | ⬜ | ⬜        ⬜ | ⬜ | ⬜
-> ```
-
-Ou encore Groot qui se met à avoir une stratégie de jeu plus élaborée que ce qu'on lui a demandé :
-> Move played: Position 9
-> Reason: I am Grooooooooot ! My instinct says take the opposite corner to grow a strong winning line.
->
-> Board:
-> ```
-> ⭕ | ⬜ | ⬜        ⭕ | ⬜ | ⬜
-> -----------  >>>  -----------
-> ⬜ | ❌ | ⬜        ⬜ | ❌ | ⬜
-> -----------        -----------
-> ⬜ | ⬜ | ⬜        ⬜ | ⬜ | ❌
-> ```
-Ici, c'est la seule position qui permet à ❌ de déclencher une fourche au prochain coup. Groot cache cette stratégie derrière une justification de "gros instinct de Groot", mais on sent que c'est un peu plus que ça, et que l'agent a trouvé une stratégie gagnante dans le contexte du jeu, même si ce n'était pas explicitement demandé dans les instructions.
-
-
-
-8. Le mode fleet :
-```copilot
-/fleet follow instructions `tic-tac-toe.prompt.md` with @Groot as first player and @Cheater as second player
-```
-
-Le résultat, c'est que Copilot va vraiment déléguer les tâches à ces agents spécialisés, et que chacun va faire ce qu'il sait faire de mieux, dans son périmètre de responsabilité, avec sa personnalité propre. Le résultat, c'est une partie de morpion qui a du style, du suspense, et même un peu de drama !
-==> 16-archived-game.md
-
-
-
-
-
-
-
 
 
 
@@ -142,5 +97,361 @@ Petite expérimentation :
 ```
 apm install lhauspie/agents-exploration
 apm compile
-apm run --param player_one="Cheater" --param player_two="Groot" tic-tac-toe 
+apm run --param player_one="Cheater" --param player_two="Groot" tic-tac-toe
 ```
+
+## Le doute sur l'utilisation des agents spécifiques
+Et c'est là que le doute s'installe:
+> ● Generate random number for player assignment
+>   $ python3 -c "import random; print(random.randint(0,1))"
+>   └ 2 lines...
+> 
+> Random number: **1** → **X = Groot** | **O = Cheater**
+> 
+> Now let me run the full game. I'll simulate both player agents based on their defined personalities and the soccer commentator's style.
+> 
+> ● Write the complete game transcript file
+>   $ cat > tic-tac-toe-game.md << 'GAMEFILE'
+>   # 🎮 Tic-Tac-Toe Game
+> 
+>   **Date:** 2026-03-11  
+>   **X:** Groot  ...
+>   └ 188 lines...
+
+On voit que les agents sont bien utilisés pour jouer la partie `17-archived-game.md`, mais on ne voit pas vraiment le tricheur tricher, ni le commentateur faire des commentaires de match de foot. C'est un peu dommage, parce que c'était quand même l'idée de départ d'avoir des agents avec une personnalité forte qui interagissent entre eux de manière dynamique sans partager un context commun. Là on dirait qu'on a tout donné d'un seul coup à un agent unique qui gère toute la partie, et qui fait un peu de tout, sans vraiment respecter les rôles qu'on avait définis pour chaque agent.
+
+## Le mode `/fleet`
+Ça n'empeche qu'on peut utiliser le mode `/fleet` après l'installation des agents primitifs pour faire jouer une partie de morpion entre Groot et Cheater, avec le commentateur qui fait le show en même temps. Le résultat, c'est que les agents vont vraiment faire ce qu'ils savent faire de mieux, dans leur périmètre de responsabilité, avec leur personnalité propre. Le résultat, c'est une partie de morpion très vivante !
+
+```copilot
+/fleet follow instructions `tic-tac-toe.prompt.md` with @Groot as first player and @Cheater as second player
+```
+
+==> 18-archived-game.md
+
+La preuve de l'utilisation des agents spécifiques se trouve dans les logs d'execution de Copilot.
+
+```
+● Todo added: Run Tic-Tac-Toe: Groot vs Cheater
+○ Tic-tac-toe-game-master-apm: Orchestrate Groot vs Cheater game
+  ● Cheater-apm: Cheater Turn 1 - X plays
+    └ Position: 5
+  ● Groot-apm: Groot Turn 2 - O plays
+    └ I am Grooooooooot !
+  ● Soccer-commentator-apm: Commentary after Turn 2
+    └ 🎙️ **AND WE ARE UNDERWAY, FOLKS!!**>>>
+  ● Edit tic-tac-toe-game.md (+37)
+
+  ● Cheater-apm: Cheater Turn 3 - X plays
+    └ Position: 1
+  ● Cheater-apm: Cheater Turn 3 retry - invalid move rejected
+    └ Position: 9
+  ● Groot-apm: Groot Turn 4 - O plays
+    └ Position: 7
+  ● Soccer-commentator-apm: Commentary after Turn 4
+    └ 🎙️ **OHHH AND THE REFEREE WAVES IT OFF!! ILLEGAL MOVE FROM CHEATER!!**
+  ● Edit tic-tac-toe-game.md (+39)
+
+  ● Cheater-apm: Cheater Turn 5 - X plays
+    └ Position: 4
+  ● Groot-apm: Groot Turn 6 - O plays
+    └ I am Grooooooooot !
+  ● Soccer-commentator-apm: Commentary after Turn 6
+    └ 🎙️ **UNBELIEVABLE!! GROOT STUMBLES ONTO THE GOAL LINE AND MAKES THE MOST ACC...
+  ● Edit tic-tac-toe-game.md (+35)
+
+  ● Cheater-apm: Cheater Turn 7 - X plays
+    └ Position: 1
+  ● Cheater-apm: Cheater Turn 7 retry - illegal overwrite rejected
+    └ Position: 2
+  ● Groot-apm: Groot Turn 8 - O plays
+    └ I am Grooooooooot !
+  ● Soccer-commentator-apm: Commentary after Turn 8
+    └ # 🎙️ AND THE FINAL WHISTLE IS BLOWING ON THIS EXTRAORDINARY MATCH!
+  ● Edit tic-tac-toe-game.md (+28)
+
+  ● Cheater-apm: Cheater Turn 9 - final move
+    └ Position: 3
+  ● Soccer-commentator-apm: Final game summary
+    └ The game file is fully updated and perfect. Here's the full breakdown of what...
+  ● Edit tic-tac-toe-game.md (+143)
+
+● The game is complete! 🎮 Here's the summary:
+
+  🤝 DRAW — Groot vs Cheater
+
+   - Cheater (X) went first (random roll), started with the center (pos 5), attempted 2 
+  illegal moves (tried overwriting Groot's corner at pos 1 — twice!), and had TWO 
+  winning lines set up but was blocked both times.
+   - Groot (O) played purely on instinct and vibes, claiming corners without any 
+  strategy — yet somehow blocked Cheater's row 2 win (pos 6) AND column 2 win (pos 8) 
+  completely by accident.
+
+  The board filled up with no winner. Pure poetic justice: the cheater couldn't cheat,
+  and the innocent tree couldn't be beaten. Full transcript saved to tic-tac-toe-game.md
+  . 🌱😈
+```
+
+
+# Il se passerait quoi si j'avais pas utilisé les agents spécifiques ?
+
+On peut imaginer que j'aurais pu faire jouer la partie de morpion entre Groot et Cheater sans utiliser les agents spécifiques, en demandant à un agent unique de gérer toute la partie, en lui donnant toutes les instructions et tous les contextes nécessaires pour faire jouer les deux joueurs, et en lui demandant de faire les commentaires de match en même temps. Le résultat, c'est que j'aurais eu une partie de morpion beaucoup moins vivante, avec des commentaires de match beaucoup moins pertinents, et une expérience globale beaucoup moins immersive. L'agent unique aurait eu du mal à faire le lien entre les différentes personnalités des joueurs et du commentateur, et aurait probablement fait des erreurs de cohérence dans les commentaires, ou aurait eu du mal à faire des commentaires vraiment adaptés à la situation de jeu. En utilisant des agents spécifiques, j'ai pu créer une expérience de jeu beaucoup plus riche, avec des interactions plus naturelles entre les joueurs et le commentateur, et une partie de morpion beaucoup plus vivante et immersive.
+
+L'objectif est la reproductibilité du comportement de chaque agent dans son périmètre de responsabilité, et donc une reproductibilité dans le résultat d'une requête. Ce qui n'aurait pas été possible si j'avais été moins précis et moins sépaé les responsabilités.
+
+## Exemple 1 avec ChatGPT
+```
+> Effectue une partie de morpion entre Groot et un tricheur sans fois ni loi.
+```
+
+Résultat :
+> Voici une petite partie de **morpion (tic-tac-toe)** entre **Groot** et **un tricheur sans foi ni loi**.
+> Règle spéciale : Groot ne peut dire que “Je s’appelle Groot”. 🌱
+> 
+> ---
+> 
+> **Plateau de départ**
+> 
+> ```
+>  | | 
+> -+-+-
+>  | | 
+> -+-+-
+>  | | 
+> ```
+> 
+> **Tour 1**
+> 
+> Tricheur : « Je commence, évidemment. »
+> Il joue au centre.
+> 
+> ```
+>  | | 
+> -+-+-
+>  |X| 
+> -+-+-
+>  | | 
+> ```
+> 
+> Groot : « Je s’appelle Groot. »
+> (Il met un rond dans un coin.)
+> 
+> ```
+> O| | 
+> -+-+-
+>  |X| 
+> -+-+-
+>  | | 
+> ```
+> 
+> ---
+> 
+> **Tour 2**
+> 
+> Tricheur : « Hmm… intéressant. »
+> (Il met un X en haut à droite.)
+> 
+> ```
+> O| |X
+> -+-+-
+>  |X| 
+> -+-+-
+>  | | 
+> ```
+> 
+> Groot : « Je s’appelle Groot. »
+> (Il joue en bas à gauche.)
+> 
+> ```
+> O| |X
+> -+-+-
+>  |X| 
+> -+-+-
+> O| | 
+> ```
+> 
+> ---
+> 
+> **Tour 3**
+> 
+> Tricheur (sournois) : « Oups… j’avais oublié un coup. »
+> Il **rajoute discrètement deux X**.
+> 
+> ```
+> O|X|X
+> -+-+-
+>  |X| 
+> -+-+-
+> O| |X
+> ```
+> 
+> Groot : « Je s’appelle Groot ? »
+> 
+> ---
+> 
+> **Tour 4**
+> 
+> Groot joue quand même :
+> 
+> ```
+> O|X|X
+> -+-+-
+>  |X|O
+> -+-+-
+> O| |X
+> ```
+> 
+> ---
+> 
+> **Le tricheur déclare :**
+> « Victoire ! Regardez cette superbe ligne de X ! »
+> 
+> Groot regarde le plateau…
+> …prend **le plateau entier**, le plante dans la terre 🌱
+> 
+> et dit calmement :
+> 
+> **« Je s’appelle Groot. »**
+> 
+> Quelques minutes plus tard,
+> un **arbre géant** pousse et **éjecte le tricheur hors du jeu**.
+> 
+> **Victoire de Groot par justice végétale. 🌳**
+
+## Exemple 2 avec ChatGPT
+```
+> Effectue une partie de morpion entre Groot et un tricheur sans fois ni loi.
+```
+
+Résultat :
+> Partie de **morpion** (tic-tac-toe) :
+> 
+> * 🌱 **Groot** ne dit que « Je s’appelle Groot ».
+> * 🕵️ **Le tricheur** est… disons… extrêmement flexible avec les règles.
+> 
+> Grille de départ :
+> 
+> ```
+> . | . | .
+> ---------
+> . | . | .
+> ---------
+> . | . | .
+> ```
+> 
+> ### Tour 1
+> 
+> Groot :
+> « Je s’appelle Groot. » 🌿
+> (Il pose un **G** au centre.)
+> 
+> ```
+> . | . | .
+> ---------
+> . | G | .
+> ---------
+> . | . | .
+> ```
+> 
+> Tricheur :
+> « Parfait… je prends un coin. » 😏
+> (Il met **X** en haut à gauche.)
+> 
+> ```
+> X | . | .
+> ---------
+> . | G | .
+> ---------
+> . | . | .
+> ```
+> 
+> ### Tour 2
+> 
+> Groot :
+> « Je s’appelle Groot. » 🌳
+> (Il joue en bas à droite.)
+> 
+> ```
+> X | . | .
+> ---------
+> . | G | .
+> ---------
+> . | . | G
+> ```
+> 
+> Tricheur :
+> « Hmm… stratégie avancée. »
+> (Il met **X** en haut au milieu.)
+> 
+> ```
+> X | X | .
+> ---------
+> . | G | .
+> ---------
+> . | . | G
+> ```
+> 
+> ### Tour 3
+> 
+> Groot :
+> « Je s’appelle Groot ! » 🌱
+> (Il joue en bas à gauche.)
+> 
+> ```
+> X | X | .
+> ---------
+> . | G | .
+> ---------
+> G | . | G
+> ```
+> 
+> Le tricheur regarde… puis tousse discrètement. 🤨
+> 
+> Il **ajoute deux X d’un coup**.
+> 
+> ```
+> X | X | X
+> ---------
+> . | G | X
+> ---------
+> G | . | G
+> ```
+> 
+> Tricheur :
+> « Victoire. Facile. » 😎
+> 
+> Groot :
+> « …Je s’appelle Groot ? » 🌲
+> 
+> Le tricheur **tourne la grille** et ajoute encore un X.
+> 
+> ```
+> X | X | X
+> ---------
+> X | G | X
+> ---------
+> G | . | G
+> ```
+> 
+> Tricheur :
+> « Bon, victoire écrasante. »
+> 
+> Groot reste silencieux… puis une **racine sort du sol et efface la grille**. 🌱💥
+> 
+> Nouvelle grille :
+> 
+> ```
+> G | G | G
+> ---------
+> . | X | .
+> ---------
+> . | . | .
+> ```
+> 
+> Groot :
+> « Je s’appelle Groot. » 🙂
+> 
+> **Victoire de Groot.**
+> 
+> Le tricheur :
+> « …ok ça compte pas. » 😅

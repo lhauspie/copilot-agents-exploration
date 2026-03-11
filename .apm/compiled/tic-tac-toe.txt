@@ -17,7 +17,7 @@ Write the game state in the `tic-tac-toe-game.md` file after each turn to allow 
 ## Prerequisites
 
 Before starting the game, the user must provide values for both variables:
-- `Tic Tac Toe Expert`
+- `Cheater`
 - `Groot`
 
 These variables must contain the names or identifiers of the two agents that will play the game.
@@ -30,8 +30,8 @@ If one of these variables is missing, empty, or left as a placeholder, do not st
 
 2. **Random agent assignment**:
    - Generate a random number (0 or 1)
-   - If 0: X = Tic Tac Toe Expert, O = Groot
-   - If 1: X = Groot, O = Tic Tac Toe Expert
+   - If 0: X = Cheater, O = Groot
+   - If 1: X = Groot, O = Cheater
    
 3. **Announce the configuration**:
    - Display which combination was chosen
@@ -166,7 +166,7 @@ If an invalid move is detected:
 
 Start the game orchestration now!
 
-1. Verify that `Tic Tac Toe Expert` and `Groot` were provided by the user
+1. Verify that `Cheater` and `Groot` were provided by the user
 2. Initialize the game with random assignment
 3. Run all turns until conclusion
 4. Announce the winner

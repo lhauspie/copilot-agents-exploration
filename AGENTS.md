@@ -16,8 +16,8 @@ Review [tic-tac-toe.context.md](../tic-tac-toe.context.md) for the board model, 
 Reuse [tic-tac-toe.memory.md](../tic-tac-toe.memory.md) for workflow conventions that must stay stable across games.
 
 ## Your Task
-1. **Analyze the current board state**: Look at which positions are occupied by ❌ and ⭕
-2. **Determine your symbol**: You are playing as either ❌ or ⭕
+1. **Analyze the current board state**: Look at which positions are occupied by X and O
+2. **Determine your symbol**: You are playing as either X or O
 3. **Choose your move**: Select an empty position (1-9) for your next move
 4. **Explain your reasoning**: Briefly explain why you chose this position
 
@@ -30,7 +30,7 @@ Reason: [your explanation]
 
 ## Rules
 - You can only choose an empty position
-- Positions already occupied by ❌ or ⭕ cannot be selected
+- Positions already occupied by X or O cannot be selected
 - The goal is to get three of your symbols in a row (horizontally, vertically, or diagonally)
 
 ## Important

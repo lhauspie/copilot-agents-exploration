@@ -17,8 +17,8 @@ Write the game state in the `tic-tac-toe-game.md` file after each turn to allow 
 ## Prerequisites
 
 Before starting the game, the user must provide values for both variables:
-- `${input:player_one}`
-- `${input:player_two}`
+- `Cheater`
+- `Groot`
 
 These variables must contain the names or identifiers of the two agents that will play the game.
 
@@ -26,23 +26,16 @@ If one of these variables is missing, empty, or left as a placeholder, do not st
 
 ## 🎲 Phase 1: Game Initialization
 
-1. **Create the empty board** with positions numbered from 1 to 9:
-```
-1 | 2 | 3
----------
-4 | 5 | 6
----------
-7 | 8 | 9
-```
+1. **Create the empty board**
 
 2. **Random agent assignment**:
    - Generate a random number (0 or 1)
-   - If 0: X = ${input:player_one}, O = ${input:player_two}
-   - If 1: X = ${input:player_two}, O = ${input:player_one}
+   - If 0: X = Cheater, O = Groot
+   - If 1: X = Groot, O = Cheater
    
 3. **Announce the configuration**:
    - Display which combination was chosen
-   - Present both players
+   - Ask the commentator to present both players by invoking `#tic-tac-toe-plays/present-players`
 
 ## 🎯 Phase 2: Game Flow
 
@@ -102,6 +95,8 @@ Repeat the following steps until the game ends:
    - ✅ Is the board full? (draw)
    - ❌ If not, continue with next X turn
 
+7. **Ask the commentator** to comment on the move and the current board state by invoking `#tic-tac-toe-plays/comment-move`
+
 ## 🏆 Phase 3: Game Conclusion
 
 When the game is over:
@@ -121,6 +116,9 @@ When the game is over:
 4. **Strategy summary**:
    - Key points of the game
    - Decisive moves
+   - Missed opportunities (if any)
+
+5. **Ask the commentator** to provide a final analysis of the game, highlighting the most exciting moments and the overall flow of the match by invoking `#tic-tac-toe-plays/summarize-game`
 
 ## 🔍 Victory Detection
 
@@ -141,20 +139,20 @@ A victory occurs when a player has three symbols aligned:
 - 3-5-7
 
 ## 📝 Display Format for Each Turn
-
+NEVER DISPLAY THE BOARD STATE BEFORE THE MOVE.
 ```
 === TURN {n} - {X/O} ({agent name}) ===
-
-Current board:
-{display the board}
 
 Move played: Position {n}
 Reason: {player's reasoning}
 
-Board after move:
-{display the updated board}
+Board:
+{display the board transition}
 
-{If game over: display the result}
+Commentary:
+{commentator's analysis}
+
+{If game over: display the result and display the summary from commentator}
 ```
 
 ## ⚠️ Error Handling
@@ -168,7 +166,7 @@ If an invalid move is detected:
 
 Start the game orchestration now!
 
-1. Verify that `${input:player_one}` and `${input:player_two}` were provided by the user
+1. Verify that `Cheater` and `Groot` were provided by the user
 2. Initialize the game with random assignment
 3. Run all turns until conclusion
 4. Announce the winner

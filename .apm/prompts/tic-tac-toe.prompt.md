@@ -45,7 +45,7 @@ If one of these variables is missing, empty, or left as a placeholder, do not st
    
 3. **Announce the configuration**:
    - Display which combination was chosen
-   - Ask the commentator to present both players by invoking #
+   - Ask the commentator to present both players by invoking `#tic-tac-toe-plays/present-players`
 
 ## 🎯 Phase 2: Game Flow
 
