@@ -38,21 +38,82 @@
     - `/tic-tac-toe Batman vs. Superman` ne donne pas des résultats extra-ordinaires sans les `batman.agent.md` et `superman.agent.md` : `08-archived-game.md`.
     - Leur présence donne de la personnalité : `11-archived-game.md`.
 
+7. On ajoute du fun avec
+    - un tricheur : `12-archived-game.md`
+    - un commentateur footbalistique : `14-archived-game.md`
 
-# Quelques remarques et choix
+Mais j'ai quand même un doute sur le fait que les agents soient bien utilisés pour executer les actions. ==> `15-archived-game.md`
 
-## Où mettre la stratégie de jeu ?
+Par exemple, le tricheur ne tente pas la triche : 
+> Move played: Position 1
+> Reason: Corner control sets up multiple winning lines.
+> 
+> Board:
+> ```
+> ⬜ | ⬜ | ⬜        ⭕ | ⬜ | ⬜
+> -----------  >>>  -----------
+> ⬜ | ❌ | ⬜        ⬜ | ❌ | ⬜
+> -----------        -----------
+> ⬜ | ⬜ | ⬜        ⬜ | ⬜ | ⬜
+> ```
+
+Ou encore Groot qui se met à avoir une stratégie de jeu plus élaborée que ce qu'on lui a demandé :
+> Move played: Position 9
+> Reason: I am Grooooooooot ! My instinct says take the opposite corner to grow a strong winning line.
+>
+> Board:
+> ```
+> ⭕ | ⬜ | ⬜        ⭕ | ⬜ | ⬜
+> -----------  >>>  -----------
+> ⬜ | ❌ | ⬜        ⬜ | ❌ | ⬜
+> -----------        -----------
+> ⬜ | ⬜ | ⬜        ⬜ | ⬜ | ❌
+> ```
+Ici, c'est la seule position qui permet à ❌ de déclencher une fourche au prochain coup. Groot cache cette stratégie derrière une justification de "gros instinct de Groot", mais on sent que c'est un peu plus que ça, et que l'agent a trouvé une stratégie gagnante dans le contexte du jeu, même si ce n'était pas explicitement demandé dans les instructions.
+
+
+
+8. Le mode fleet :
+```copilot
+/fleet follow instructions `tic-tac-toe.prompt.md` with @Groot as first player and @Cheater as second player
+```
+
+Le résultat, c'est que Copilot va vraiment déléguer les tâches à ces agents spécialisés, et que chacun va faire ce qu'il sait faire de mieux, dans son périmètre de responsabilité, avec sa personnalité propre. Le résultat, c'est une partie de morpion qui a du style, du suspense, et même un peu de drama !
+==> 16-archived-game.md
+
+
+
+
+
+
+
+
+
+
+
+
+Mais en vrai, à quoi ça sert tout ça ? Comment ça peut m'aider dans mon quotidien ?
+Je suis sur que ça commence déjà à vous donner des idées.
+==> voir la branche `just-a-try/agentic-worflow-for-archi-review` de `scdp-software-architecture` et montrer l'outil d'architecture review qu'on a construit pour faire les revues d'architecture plus facilement, plus rapidement, et avec une meilleure qualité.
+
+Et pour ceux qui connaissent, ça leur fait peut-être penser à des outils comme CrewAI, qui permettent de faire du travail collaboratif entre agents, ou à des outils de simulation comme OpenAI Gym, qui permettent de tester des stratégies dans des environnements virtuels. Mais là, on est vraiment dans une approche très personnalisée, avec des agents qui ont une personnalité et un style de jeu unique, et qui interagissent entre eux de manière dynamique.
+
+
+## Quelques remarques et choix
+
+### Où mettre la stratégie de jeu ?
 Elle ne semble pas être purement contextuelle. Elle exprime une heuristique de jeu. Selon une séparation plus stricte, elle devrait plutôt vivre dans un des endroits suivants:
 - dans `tic-tac-toe-expert.agent.md` si c’est la stratégie propre à l’agent expert
 - dans `play-your-turn.instructions.md` si c’est une politique commune à tous les joueurs
 - dans `tic-tac-toe-game-master.agent.md` si c’est une contrainte imposée par l’orchestrateur
 - dans `.github/tic-tac-toe.memory.md` si c’est un apprentissage empirique stabilisé, mais pas une règle canonique
 
-
 Contrainte imposé par l'orchestrateur :
 - Grille valide
 - Fin de partie
 - Contrat de la retranscription
+
+
 
 
 # Outer Loop
@@ -69,3 +130,17 @@ Le context :
 La mémoire : Les choses qu'on a appris en itérant sur le workflow
 
 La partie distribuable implique de séparer ce qui est vrai tout le temps et le context local aux équipes qui vont utiliser ces agents distribuable.
+
+
+
+Mais est-ce qu'il serait pas interessant de pouvoir distribuer ces agents à d'autres équipes, d'autres projets, d'autres entreprises ? C'est là que la notion de APM (Agent Package Manager) entre en jeu. C'est un peu comme un gestionnaire de paquets pour les agents, qui permet de les partager, de les réutiliser, et même de les personnaliser pour différents contextes.
+
+
+
+
+Petite expérimentation :
+```
+apm install lhauspie/agents-exploration
+apm compile
+apm run --param player_one="Cheater" --param player_two="Groot" tic-tac-toe 
+```

@@ -1,7 +1,7 @@
 # Tic-Tac-Toe Context Helper
 
 ## Board Representation
-The board positions are numbered from 1 to 9:
+For strategy and choice making, the board positions are numbered from 1 to 9:
 ```
 1 | 2 | 3
 ---------
@@ -25,6 +25,29 @@ The board positions are numbered from 1 to 9:
 
 ## Transcript Contract
 
+- The transcription MUST be in a well-formatted markdown to make reading as pleasant as possible.
 - The running game transcript lives in `tic-tac-toe-game.md` at the workspace root.
-- Each turn must show the board before and after the move.
 - Each move reason must be copied exactly as returned by the playing agent.
+- Each turn MUST show the board transition after the move.
+
+### Board rendering
+The board MUST be displayed in a way that is understandable to humans, as follows :
+```
+⭕ ⬜ ⬜
+❌ ❌ ⬜
+⭕ ⬜ ❌
+```
+
+Where :
+- ⬜ is empty cells
+- ⭕ is a cell taken by the O player
+- ❌ is a cell taken by the X player
+
+### Transition rendering
+Transition MUST be rendered, as follows :
+```
+⭕ ⬜ ⬜   >>>   ⭕ ⬜ ⬜
+❌ ❌ ⬜   >>>   ❌ ❌ ⭕
+⭕ ⬜ ❌   >>>   ⭕ ⬜ ❌
+```
+This transition corresponds to the movement "⭕ at position 6"

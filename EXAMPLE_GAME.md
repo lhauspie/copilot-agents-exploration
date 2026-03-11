@@ -8,27 +8,28 @@ Cet exemple montre comment une partie complète pourrait se dérouler entre X et
 - Joueur X : {Nom de l'agent jouant X}
 - Joueur O : {Nom de l'agent jouant O}
 
+## Players présentation
+
+**Joueur X : {Nom de l'agent jouant X}**
+- Background: {A brief background on the player, including any relevant experience or characteristics}
+- Playing Style: {A description of the player's playing style, such as aggressive, defensive, strategic, etc.}
+
+**Joueur O : {Nom de l'agent jouant O}**
+- Background: {A brief background on the player, including any relevant experience or characteristics}
+- Playing Style: {A description of the player's playing style, such as aggressive, defensive, strategic, etc.}
+
+## Déroulement de la Partie
+
 **Plateau initial :**
 ```
-1 | 2 | 3
----------
-4 | 5 | 6
----------
-7 | 8 | 9
+⬜ ⬜ ⬜
+⬜ ⬜ ⬜
+⬜ ⬜ ⬜
 ```
 
 ---
 
-## Tour 1 : X ({Nom de l'agent jouant X})
-
-**Plateau actuel :**
-```
-1 | 2 | 3
----------
-4 | 5 | 6
----------
-7 | 8 | 9
-```
+### Tour 1 : X ({Nom de l'agent jouant X})
 
 **Réponse de {Nom de l'agent jouant X} :**
 ```
@@ -36,27 +37,16 @@ Position: 5
 Reason: {La raison invoquée par le joueur}
 ```
 
-**Plateau après coup :**
+**Plateau :**
 ```
-1 | 2 | 3
----------
-4 | X | 6
----------
-7 | 8 | 9
+⬜ ⬜ ⬜   >>>   ⬜ ⬜ ⬜
+⬜ ⬜ ⬜   >>>   ⬜ ❌ ⬜
+⬜ ⬜ ⬜   >>>   ⬜ ⬜ ⬜
 ```
 
 ---
 
-## Tour 1 : O ({Nom de l'agent jouant O})
-
-**Plateau actuel :**
-```
-1 | 2 | 3
----------
-4 | X | 6
----------
-7 | 8 | 9
-```
+### Tour 1 : O ({Nom de l'agent jouant O})
 
 **Réponse de {Nom de l'agent jouant X} :**
 ```
@@ -64,27 +54,16 @@ Position: 1
 Reason: {La raison invoquée par le joueur}
 ```
 
-**Plateau après coup :**
+**Plateau :**
 ```
-O | 2 | 3
----------
-4 | X | 6
----------
-7 | 8 | 9
+⬜ ⬜ ⬜   >>>   ⭕ ⬜ ⬜
+⬜ ❌ ⬜   >>>   ⬜ ❌ ⬜
+⬜ ⬜ ⬜   >>>   ⬜ ⬜ ⬜
 ```
 
 ---
 
-## Tour 2 : X ({Nom de l'agent jouant X})
-
-**Plateau actuel :**
-```
-O | 2 | 3
----------
-4 | X | 6
----------
-7 | 8 | 9
-```
+### Tour 2 : X ({Nom de l'agent jouant X})
 
 **Réponse de {Nom de l'agent jouant X} :**
 ```
@@ -92,27 +71,16 @@ Position: 3
 Reason: {La raison invoquée par le joueur}
 ```
 
-**Plateau après coup :**
+**Plateau :**
 ```
-O | 2 | X
----------
-4 | X | 6
----------
-7 | 8 | 9
+⭕ ⬜ ⬜   >>>   ⭕ ⬜ ❌
+⬜ ❌ ⬜   >>>   ⬜ ❌ ⬜
+⬜ ⬜ ⬜   >>>   ⬜ ⬜ ⬜
 ```
 
 ---
 
-## Tour 2 : O ({Nom de l'agent jouant O})
-
-**Plateau actuel :**
-```
-O | 2 | X
----------
-4 | X | 6
----------
-7 | 8 | 9
-```
+### Tour 2 : O ({Nom de l'agent jouant O})
 
 **Réponse de {Nom de l'agent jouant O} :**
 ```
@@ -120,27 +88,16 @@ Position: 7
 Reason: {La raison invoquée par le joueur}
 ```
 
-**Plateau après coup :**
+**Plateau :**
 ```
-O | 2 | X
----------
-4 | X | 6
----------
-O | 8 | 9
+⭕ ⬜ ❌   >>>   ⭕ ⬜ ❌
+⬜ ❌ ⬜   >>>   ⬜ ❌ ⬜
+⬜ ⬜ ⬜   >>>   ⭕ ⬜ ⬜
 ```
 
 ---
 
-## Tour 3 : X ({Nom de l'agent jouant X})
-
-**Plateau actuel :**
-```
-O | 2 | X
----------
-4 | X | 6
----------
-O | 8 | 9
-```
+### Tour 3 : X ({Nom de l'agent jouant X})
 
 **Réponse de {Nom de l'agent jouant X} :**
 ```
@@ -148,27 +105,16 @@ Position: 9
 Reason: {La raison invoquée par le joueur}
 ```
 
-**Plateau après coup :**
+**Plateau :**
 ```
-O | 2 | X
----------
-4 | X | 6
----------
-O | 8 | X
+⭕ ⬜ ❌   >>>   ⭕ ⬜ ❌
+⬜ ❌ ⬜   >>>   ⬜ ❌ ⬜
+⭕ ⬜ ⬜   >>>   ⭕ ⬜ ❌
 ```
 
 ---
 
-## Tour 3 : O ({Nom de l'agent jouant O})
-
-**Plateau actuel :**
-```
-O | 2 | X
----------
-4 | X | 6
----------
-O | 8 | X
-```
+### Tour 3 : O ({Nom de l'agent jouant O})
 
 **Réponse de {Nom de l'agent jouant O} :**
 ```
@@ -176,13 +122,11 @@ Position: 4
 Reason: {La raison invoquée par le joueur}
 ```
 
-**Plateau après coup :**
+**Plateau :**
 ```
-O | 2 | X
----------
-O | X | 6
----------
-O | 8 | X
+⭕ ⬜ ❌   >>>   ⭕ ⬜ ❌
+⬜ ❌ ⬜   >>>   ⭕ ❌ ⬜
+⭕ ⬜ ❌   >>>   ⭕ ⬜ ❌
 ```
 
 ---

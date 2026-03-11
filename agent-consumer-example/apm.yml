@@ -1,6 +1,6 @@
-name: just-a-try
+name: agent-consumer-example
 version: 1.0.0
-description: APM project for just-a-try
+description: APM project for agent-consumer-example
 author: Logan HAUSPIE
 dependencies:
   apm:
