@@ -6,7 +6,7 @@ Ce dépôt met en place un agent de Tic-Tac-Toe distribuable, construit selon le
 
 ```text
 agents-exploration/
-├── .github/
+├── .apm/
 │   ├── agents/
 │   │   ├── batman.agent.md
 │   │   ├── groot.agent.md
@@ -175,7 +175,16 @@ apm_modules/
 
 ## 📖 Références
 
-- [GitHub Blog - How to build reliable AI workflows with agentic primitives and context engineering](https://github.blog/ai-and-ml/github-copilot/how-to-build-reliable-ai-workflows-with-agentic-primitives-and-context-engineering/)
-- [VS Code - Customize AI in Visual Studio Code](https://code.visualstudio.com/docs/copilot/copilot-customization)
-- [PROSE - Tooling: Scaling Agent Primitives](https://danielmeppiel.github.io/awesome-ai-native/docs/tooling/)
-- [Example Repository from the autor of GitHub Blog](https://github.com/danielmeppiel/corporate-website)
+- [How to build reliable AI workflows with agentic primitives and context engineering](https://github.blog/ai-and-ml/github-copilot/how-to-build-reliable-ai-workflows-with-agentic-primitives-and-context-engineering)
+- [Getting Started (Awesome AI Native)](https://danielmeppiel.github.io/awesome-ai-native/docs/getting-started)
+- [Tooling: Scaling Agent Primitives (Awesome AI Native)](https://danielmeppiel.github.io/awesome-ai-native/docs/tooling)
+- [Installing GitHub Copilot CLI — GitHub Docs](https://docs.github.com/en/copilot/how-tos/copilot-cli/set-up-copilot-cli/install-copilot-cli)
+- [GitHub Copilot CLI (repo)](https://github.com/github/copilot-cli)
+- [APM – Agent Package Manager (microsoft/apm)](https://github.com/microsoft/apm)
+- [APM Sample Package (microsoft/apm-sample-package)](https://github.com/microsoft/apm-sample-package)
+- [APM docs: Getting started (apm/docs/getting-started.md)](https://github.com/microsoft/apm/blob/main/docs/getting-started.md)
+- [APM GitHub Action (danielmeppiel/action-apm-cli)](https://github.com/danielmeppiel/action-apm-cli)
+- [Corporate Website (danielmeppiel/corporate-website)](https://github.com/danielmeppiel/corporate-website)
+- [Running tasks in parallel with the /fleet command — GitHub Docs](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/fleet)
+- [Dotnet architecture good practices (awesome-copilot)](https://github.com/github/awesome-copilot/blob/main/instructions/dotnet-architecture-good-practices.instructions.md)
+- [Customize AI in Visual Studio Code](https://code.visualstudio.com/docs/copilot/copilot-customization)

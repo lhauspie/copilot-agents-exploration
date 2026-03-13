@@ -532,17 +532,3 @@ C'est bien beau, on a fait jouer des agents au morpion, c'est pas très utile.
 En vrai, à quoi ça sert tout ça ? Comment ça peut m'aider dans mon quotidien ?
 Je suis sur que ça commence déjà à vous donner des idées.
 ==> voir la branche `just-a-try/agentic-worflow-for-archi-review` de `scdp-software-architecture` et montrer l'outil d'architecture review qu'on a construit pour faire les revues d'architecture plus facilement, plus rapidement, et avec une meilleure qualité.
-
-
-# Bibliographie
-- https://github.blog/ai-and-ml/github-copilot/how-to-build-reliable-ai-workflows-with-agentic-primitives-and-context-engineering
-- https://danielmeppiel.github.io/awesome-ai-native/docs/getting-started
-- https://danielmeppiel.github.io/awesome-ai-native/docs/tooling
-- https://docs.github.com/en/copilot/how-tos/copilot-cli/set-up-copilot-cli/install-copilot-cli
-- https://github.com/github/copilot-cli
-- https://github.com/microsoft/apm
-- https://github.com/microsoft/apm-sample-package
-- https://github.com/microsoft/apm/blob/main/docs/getting-started.md
-- https://github.com/danielmeppiel/action-apm-cli
-- https://github.com/danielmeppiel/corporate-website
-- https://docs.github.com/en/copilot/concepts/agents/copilot-cli/fleet
